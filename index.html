@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+	<head>
+		<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+		<script src="/socket.io.min.js"></script>
+		<script>
+
+$(function() {
+	var socket = io.connect('http://192.168.56.50:3000/chat');
+	socket.emit('join', { name: 'tommy' });
+
+	socket.on('message', function(data) {
+		console.log(from);
+		console.log(message);
+	});
+
+	$('#btn-send').on('click', function() {
+		socket.emit('message', { message: $('#message').val() });
+	});
+});
+
+		</script>
+	</head>
+	<body>
+		<input id="message" type="text" />
+		<button id="btn-send">Send</button>
+	</body>
+</html>

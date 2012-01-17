@@ -1,6 +1,6 @@
 var express = require('express');
 var app = module.exports = express.createServer();
-var io = require('sockiet.io').listen(app);
+var io = require('socket.io').listen(app);
 
 app.configure('development', function() {
 	app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
